@@ -28,37 +28,37 @@ function addTask() {
 
   const newElement = createElement(newTask);
   newElement.classList.add("new");
-  newElement.addEventListener("click", (e) => {
-    // So my delete function uses splice method for deleting the task from the array list. It uses the data-id of the task to identify the task that needs to be removed. That is why it is necessary to get the it. In this code, it is stored in the variable "taskDataSetId".
+  // newElement.addEventListener("click", (e) => {
+  //   // So my delete function uses splice method for deleting the task from the array list. It uses the data-id of the task to identify the task that needs to be removed. That is why it is necessary to get the it. In this code, it is stored in the variable "taskDataSetId".
 
-    const targetBtn = e.target;
-    const copyBtn = targetBtn.closest(".copy-Btn");
-    const deleteBtn = targetBtn.closest(".deleteBtn");
-    const completeBtn = targetBtn.closest(".completeBtn");
-    const targetCB = targetBtn.matches(".js-myCheckbox");
+  //   const targetBtn = e.target;
+  //   const copyBtn = targetBtn.closest(".copy-Btn");
+  //   const deleteBtn = targetBtn.closest(".deleteBtn");
+  //   const completeBtn = targetBtn.closest(".completeBtn");
+  //   const targetCB = targetBtn.matches(".js-myCheckbox");
 
-    if (!deleteBtn && !completeBtn && !targetCB && !copyBtn) return;
+  //   if (!deleteBtn && !completeBtn && !targetCB && !copyBtn) return;
 
-    const targetBtnDiv = e.target.closest(".task-container");
-    const taskName = targetBtnDiv.querySelector(".task");
-    const taskDataSetId = Number(targetBtnDiv.dataset.id);
+  //   const targetBtnDiv = e.target.closest(".task-container");
+  //   const taskName = targetBtnDiv.querySelector(".task");
+  //   const taskDataSetId = Number(targetBtnDiv.dataset.id);
 
-    // the index of the object related to the button.
-    const index = tasks.findIndex((item) => item.uniqueId === taskDataSetId);
+  //   // the index of the object related to the button.
+  //   const index = tasks.findIndex((item) => item.uniqueId === taskDataSetId);
 
-    if (deleteBtn) {
-      deleteTask(index, targetBtnDiv);
-    } else if (completeBtn) {
-      updateCompleteStatus(index, taskName, completeBtn);
-    } else if (targetCB) {
-      updateTrackerStatus(index, targetBtn);
-    } else if (copyBtn) {
-      const targetText =
-        copyBtn.parentElement.querySelector(".task").textContent; // needs to be inside for proper deletion
+  //   if (deleteBtn) {
+  //     deleteTask(index, targetBtnDiv);
+  //   } else if (completeBtn) {
+  //     updateCompleteStatus(index, taskName, completeBtn);
+  //   } else if (targetCB) {
+  //     updateTrackerStatus(index, targetBtn);
+  //   } else if (copyBtn) {
+  //     const targetText =
+  //       copyBtn.parentElement.querySelector(".task").textContent; // needs to be inside for proper deletion
 
-      clipboard.showCopySuccess(copyBtn, targetText);
-    }
-  });
+  //     clipboard.showCopySuccess(copyBtn, targetText);
+  //   }
+  // });
 
   taskElem.taskField.prepend(newElement);
 
